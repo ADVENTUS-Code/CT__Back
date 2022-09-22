@@ -286,7 +286,7 @@ def create_graph():
     plt.figure()
 
     response_owner = requests.get(
-        'http://localhost:5000/walletamount/owner/'+str(user_id)).json()
+        'https://azerbn.herokuapp.com//walletamount/owner/'+str(user_id)).json()
 
     datas = response_owner
 
