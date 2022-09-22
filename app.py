@@ -1,12 +1,4 @@
-from asyncore import read
-from audioop import add, cross
-from email.mime import image
-from enum import unique
-import gc
 from imp import reload
-from sched import scheduler
-from tkinter import Image
-from webbrowser import BackgroundBrowser
 from sqlalchemy.dialects.postgresql import UUID
 from flask import Flask, jsonify, request, abort, session, Request
 from flask_sqlalchemy import SQLAlchemy
@@ -21,12 +13,10 @@ from flask_bcrypt import Bcrypt
 from decimal import Decimal
 from sqlalchemy import ForeignKey
 from flask_login import current_user, LoginManager, user_logged_in
-from flask_apscheduler import APScheduler
 import matplotlib.pyplot as plt
 import requests
 import matplotlib
 import json
-import time
 from apscheduler.schedulers.background import BackgroundScheduler
 
 matplotlib.use('Agg')
