@@ -329,7 +329,7 @@ def create_graph():
 @app.route('/walletamount', methods=['POST'])
 def post_user_wallet_infos():
 
-    Usersdatas = requests.get('http://localhost:5000/addcryptos').json()
+    Usersdatas = requests.get('https://azerbn.herokuapp.com/addcryptos').json()
 
     infos = Usersdatas['events']
 
@@ -362,7 +362,7 @@ def post_user_wallet_infos():
         individual_user_id = i
 
         Users_datas = requests.get(
-            'http://localhost:5000/addcryptos/owner/'+str(individual_user_id)).json()  # faire en sorte que users_id apparaire que 1 fois et que le prix des crypto est trier selon l'id
+            'https://azerbn.herokuapp.com/addcryptos/owner/'+str(individual_user_id)).json()  # faire en sorte que users_id apparaire que 1 fois et que le prix des crypto est trier selon l'id
 
 
 # initial price
@@ -475,7 +475,7 @@ def get_user_wallet_infos():
 @cross_origin
 @ app.route('/walletamount/owner/<owner_user_id>', methods=['GET'])
 def filter_owner_wallet_amount(owner_user_id):
-    infos = requests.get('http://localhost:5000/walletamount').json()
+    infos = requests.get('https://azerbn.herokuapp.com/walletamount').json()
     # user = Users.query.filter_by(id=owner_user_id).first()
     output_dict = [x for x in infos if x['owner_id'] == owner_user_id]
     output_json = json.dumps(output_dict)
