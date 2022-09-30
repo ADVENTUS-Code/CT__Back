@@ -27,12 +27,12 @@ app = Flask(__name__)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://zzxerstbhtqfzc:c9cbee2aa7439c4c25245d71ed366648e107d8b967c906d9b7af93643cfadf6a@ec2-54-228-218-84.eu-west-1.compute.amazonaws.com:5432/dbi7a27e9jq3ud"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SESSION_TYPE'] = "redis"
+app.config['SESSION_TYPE'] = "filesystem"
 app.config['SESSION_PERMANENT'] = False
 app.config['SESSION_USE_SIGNER'] = True
 # port = os.environ.get("REDIS_PORT")
-app.config['SESSION_REDIS'] = redis.from_url(
-    "redis://:pde5da5eb71dada78c41d8112ab6a9b5c26606b7344e40f1f34f060b0dbaa3dd3@ec2-52-48-152-250.eu-west-1.compute.amazonaws.com:8780")
+# app.config['SESSION_REDIS'] = redis.from_url(
+#     "redis://:pde5da5eb71dada78c41d8112ab6a9b5c26606b7344e40f1f34f060b0dbaa3dd3@ec2-52-48-152-250.eu-west-1.compute.amazonaws.com:8780")
 app.config['SECRET_KEY'] = 'pde5da5eb71dada78c41d8112ab6a9b5c26606b7344e40f1f34f060b0dbaa3dd3'
 
 
