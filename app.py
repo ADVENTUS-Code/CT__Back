@@ -211,8 +211,8 @@ class Users(db.Model):
 def get_current_user():
     user_id = session.get("user_id")
 
-    if not user_id:
-        return jsonify({"error": "Non autorisé"}), 401
+    # if not user_id:
+    #     return jsonify({"error": "Non autorisé"}), 401
 
     user = Users.query.filter_by(id=user_id).first()
     return jsonify({
