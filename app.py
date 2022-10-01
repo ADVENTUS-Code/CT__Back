@@ -208,7 +208,7 @@ class Users(db.Model):
 
 
 @ cross_origin
-@ app.route("/@me")
+@ app.route("/@me", methods=["GET"])
 def get_current_user():
     user_id = session.get("user_id")
 
