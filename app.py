@@ -208,8 +208,8 @@ class Users(db.Model):
 # ---------------------------------Flask authentification --------------------------------------------------
 
 
-@ cross_origin
 @ app.route("/@me", methods=["GET"])
+@ cross_origin()
 def get_current_user():
     user_id = session.get("user_id")
 
@@ -223,8 +223,8 @@ def get_current_user():
     })
 
 
-@ cross_origin
 @ app.route('/register',  methods=["POST"])
+@ cross_origin()
 def register_user():
     email = request.json["email"]
     password = request.json["password"]
@@ -247,8 +247,8 @@ def register_user():
     })
 
 
-@ cross_origin
 @ app.route('/login',  methods=["POST"])
+@ cross_origin()
 def login_user():
     email = request.json["email"]
     password = request.json["password"]
