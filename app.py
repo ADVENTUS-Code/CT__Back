@@ -18,6 +18,7 @@ import requests
 import matplotlib
 import json
 from apscheduler.schedulers.background import BackgroundScheduler
+from redis import Redis
 
 
 matplotlib.use('Agg')
@@ -31,9 +32,11 @@ app.config['SESSION_TYPE'] = "redis"
 # app.config['SESSION_TYPE'] = "filesystem"
 app.config['SESSION_PERMANENT'] = False
 app.config['SESSION_USE_SIGNER'] = True
+app.config['SESSION_REDIS'] = Redis(
+    host="ec2-52-215-145-250.eu-west-1.compute.amazonaws.com", port=10430)
 # port = os.environ.get("REDIS_PORT")
-app.config['SESSION_REDIS'] = redis.from_url(
-    "redis://:p039990fa3f0e147607f7c1b997d8212cdfd930d4d836c44f6d21598f8d62a7fe@ec2-18-202-190-160.eu-west-1.compute.amazonaws.com:22730")
+# app.config['SESSION_REDIS'] = redis.from_url(
+#     "")
 app.config['SECRET_KEY'] = 'put_my_secret_key_here'
 app.config['SESSION_COOKIE_NAME'] = "my_session"
 
