@@ -35,7 +35,7 @@ app.config['SESSION_USE_SIGNER'] = True
 # port = os.environ.get("REDIS_PORT")
 # app.config['SESSION_REDIS'] = redis.from_url(
 #     "redis://:p039990fa3f0e147607f7c1b997d8212cdfd930d4d836c44f6d21598f8d62a7fe@ec2-18-202-190-160.eu-west-1.compute.amazonaws.com:22730")
-app.config['SECRET_KEY'] = os.urandom(24).hex()
+app.config['SECRET_KEY'] = os.urandom(24)
 
 
 server_session = Session(app)
