@@ -36,7 +36,7 @@ app.config['SESSION_PERMANENT'] = False
 app.config['SESSION_USE_SIGNER'] = True
 # port = os.environ.get("REDIS_PORT")
 app.config['SESSION_REDIS'] = redis.from_url(
-    "redis://default:P2Uj5lmTPzb12GTpqxZOEoEOwDhX9FMy@redis-10140.c72.eu-west-1-2.ec2.cloud.redislabs.com:10140")
+    "redis://P2Uj5lmTPzb12GTpqxZOEoEOwDhX9FMy@redis-10140.c72.eu-west-1-2.ec2.cloud.redislabs.com:10140")
 
 app.config['SECRET_KEY'] = 'put_my_secret_key_here'
 app.config['SESSION_COOKIE_NAME'] = "my_session"
