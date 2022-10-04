@@ -37,7 +37,7 @@ app.config['SESSION_USE_SIGNER'] = True
 #     host="ec2-52-215-145-250.eu-west-1.compute.amazonaws.com", port=10430)
 # port = os.environ.get("REDIS_PORT")
 app.config['SESSION_REDIS'] = redis.from_url(
-    "redis://:pd037a52a3f1f0820f749ba365534ddf5751bbc706b411b7996468c8b9eff866f@ec2-34-241-122-201.eu-west-1.compute.amazonaws.com:20849")
+    "redis://default:P2Uj5lmTPzb12GTpqxZOEoEOwDhX9FMy@redis-10140.c72.eu-west-1-2.ec2.cloud.redislabs.com:10140")
 
 app.config['SECRET_KEY'] = 'put_my_secret_key_here'
 app.config['SESSION_COOKIE_NAME'] = "my_session"
