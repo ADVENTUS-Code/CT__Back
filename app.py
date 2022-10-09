@@ -40,6 +40,8 @@ app.config['SESSION_USE_SIGNER'] = True
 
 app.config['SECRET_KEY'] = 'put_my_secret_key_here'
 app.config['SESSION_COOKIE_NAME'] = "my_session"
+app.config['ALLOWED_HOSTS'] = ['localhost', 'https://www.azerbnct.com/',
+                               'https://www.azerbnct.com', 'www.azerbnct.com']
 
 
 server_session = Session(app)
