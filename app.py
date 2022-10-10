@@ -254,29 +254,7 @@ def register_user():
 
 
 @ cross_origin
-@ app.route('/login',  methods=["POST"])
-def login_user():
-    email = request.json["email"]
-    password = request.json["password"]
-
-    user = Users.query.filter_by(email=email).first()
-
-    if user is None:
-        return jsonify({"error": "Non autorisé"}), 401
-
-    if not bcrypt.check_password_hash(user.password, password):
-        return jsonify({"error": "Non autorisé"}), 401
-
-    session["user_id"] = user.id
-
-    return jsonify({
-        "id": user.id,
-        "email": user.email
-    })
-
-
-@ cross_origin
-@ app.route('/login',  methods=["GET"])
+@ app.route('/login',  methods=["POST", "GET"])
 def login_user():
     email = request.json["email"]
     password = request.json["password"]
