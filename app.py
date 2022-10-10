@@ -254,7 +254,7 @@ def register_user():
 
 
 @ cross_origin
-@ app.route('/login',  methods=["POST", "GET"])
+@ app.route('/login',  methods=["POST , GET"])
 def login_user():
     email = request.json["email"]
     password = request.json["password"]
