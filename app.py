@@ -33,7 +33,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "postgresql://ffbtctbuykfwze:f8f3ce9ef5e
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SESSION_TYPE'] = "filesystem"
 app.config['SESSION_PERMANENT'] = False
-# app.config['SESSION_USE_SIGNER'] = True
+app.config['SESSION_USE_SIGNER'] = True
 # port = os.environ.get("REDIS_PORT")
 # app.config['SESSION_REDIS'] = redis.from_url(
 #     "redis://:0z0dJeeK10hQfNLcu4Iv@flaskserv-4532.redis.a.osc-fr1.scalingo-dbs.com:40737")
@@ -41,7 +41,7 @@ app.config['SESSION_PERMANENT'] = False
 app.config['SECRET_KEY'] = 'put_my_secret_key_here'
 app.config['SESSION_COOKIE_NAME'] = "my_session"
 app.config['SESSION_COOKIE_SECURE'] = True
-app.config['REMEMBER_COOKIE_SECURE'] = True,
+app.config['REMEMBER_COOKIE_SECURE'] = True
 
 
 server_session = Session(app)
