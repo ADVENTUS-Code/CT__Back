@@ -337,6 +337,7 @@ def create_graph():
     #--------------------------------------------tache automatique----------------------------#
 
 
+@cross_origin  # n'y etais pas d'origin
 @app.route('/walletamount', methods=['POST'])
 def post_user_wallet_infos():
 
