@@ -214,26 +214,20 @@ class Users(db.Model):
 # ---------------------------------Flask authentification --------------------------------------------------
 
 
+
 @ cross_origin
 @ app.route("/@me")
 def get_current_user():
+    user_id = session.get("user_id")
 
-    if "user" in session:
-        user = session["user"]
-        return f"<g1>{user}</h1>"
-    else:
+    if not user_id:
         return jsonify({"error": "Non autorisé"}), 401
 
-    # user_id = session.get("user_id")
-
-    # if not user_id:
-    #     return jsonify({"error": "Non autorisé"}), 401
-
-    # user = Users.query.filter_by(id=user_id).first()
-    # return jsonify({
-    #     "id": user.id,
-    #     "email": user.email
-    # })
+    user = Users.query.filter_by(id=user_id).first()
+    return jsonify({
+        "id": user.id,
+        "email": user.email
+    })
 
 
 @ cross_origin
@@ -267,7 +261,7 @@ def login_user():
     password = request.json["password"]
 
     user = Users.query.filter_by(email=email).first()
-    session["user"] = user
+
     if user is None:
         return jsonify({"error": "Non autorisé"}), 401
 
