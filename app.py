@@ -42,7 +42,7 @@ app.config['SECRET_KEY'] = 'put_my_secret_key_here'
 app.config['SESSION_COOKIE_NAME'] = "my_session"
 app.config['SESSION_COOKIE_SECURE'] = True
 app.config['REMEMBER_COOKIE_SECURE'] = True
-app.config['SESSION_COOKIE_SAMESITE'] = None
+app.config['SESSION_COOKIE_SAMESITE'] = "None"
 
 
 server_session = Session(app)
