@@ -327,7 +327,8 @@ def create_graph():
     plt.axhline(y=0, color='#efefef')
     plt.ylabel('Pertes et gains', color='#efefef')
     plt.xlabel('Temps', color='#efefef')
-    plt.savefig('src\components\GraphicPage\\graph.png')
+    plt.savefig('graph.png')
+    # plt.savefig('src\components\GraphicPage\\graph.png')
 
     return jsonify({
         "id": user.id,
@@ -487,6 +488,7 @@ def get_user_wallet_infos():
 @ app.route('/walletamount/owner/<owner_user_id>', methods=['GET'])
 def filter_owner_wallet_amount(owner_user_id):
     infos = requests.get('https://www.azerbn.com//walletamount').json()
+    infos.headers.add('Access-Control-Allow-Origin', '*')
     # user = Users.query.filter_by(id=owner_user_id).first()
     output_dict = [x for x in infos if x['owner_id'] == owner_user_id]
     output_json = json.dumps(output_dict)
