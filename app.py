@@ -487,14 +487,14 @@ def get_user_wallet_infos():
 @cross_origin
 @ app.route('/walletamount/owner/<owner_user_id>', methods=['GET'])
 def filter_owner_wallet_amount(owner_user_id):
-    # infos = requests.get(
-    #     'https://www.azerbn.com/walletamount', headers={"": "text"}).json()
+    infos = requests.get('https://www.azerbn.com/walletamount').json()
 
-    data = (open('filed.json', 'r'))
+    with open('filed.json') as file:
+        data = json.load(file)
     # user = Users.query.filter_by(id=owner_user_id).first()
-    output_dict = [x for x in data if x['owner_id'] == owner_user_id]
-    output_json = json.dumps(output_dict)
-    return output_json
+        output_dict = [x for x in data if x['owner_id'] == owner_user_id]
+        output_json = json.dumps(output_dict)
+        return output_json
 
 
 @cross_origin
