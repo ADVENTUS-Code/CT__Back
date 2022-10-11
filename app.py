@@ -57,9 +57,9 @@ cors_config = {
     "origins": ["*"]
 }
 
-CORS(app, supports_credentials=True, resources={
-    r"/*": cors_config
-})
+CORS(app, supports_credentials=True, resources={r"/*": {"origins": "*"}})
+# resources={
+#     r"/*": cors_config
 
 
 def get_uuid():
