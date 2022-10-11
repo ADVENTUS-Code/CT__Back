@@ -57,9 +57,9 @@ cors_config = {
     "origins": ["*"]
 }
 
-CORS(app, supports_credentials=True, resources={r"/*": {"origins": "*"}})
-# resources={
-#     r"/*": cors_config
+CORS(app, supports_credentials=True, resources={
+    r"/*": cors_config
+})
 
 
 def get_uuid():
@@ -487,7 +487,8 @@ def get_user_wallet_infos():
 @cross_origin
 @ app.route('/walletamount/owner/<owner_user_id>', methods=['GET'])
 def filter_owner_wallet_amount(owner_user_id):
-    infos = requests.get('https://www.azerbn.com/walletamount').json()
+    infos = requests.get('https://www.azerbn.com/walletamount',
+                         headers={"Access-Control-Allow-Origin": "*"}).json()
     # user = Users.query.filter_by(id=owner_user_id).first()
     output_dict = [x for x in infos if x['owner_id'] == owner_user_id]
     output_json = json.dumps(output_dict)
