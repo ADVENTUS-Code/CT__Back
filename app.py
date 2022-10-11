@@ -491,9 +491,8 @@ def filter_owner_wallet_amount(owner_user_id):
     #     'https://www.azerbn.com/walletamount', headers={"": "text"}).json()
 
     data = (open('filed.json', 'r'))
-    file = data.read()
     # user = Users.query.filter_by(id=owner_user_id).first()
-    output_dict = [x for x in file if x['owner_id'] == owner_user_id]
+    output_dict = [x for x in data if x['owner_id'] == owner_user_id]
     output_json = json.dumps(output_dict)
     return output_json
 
