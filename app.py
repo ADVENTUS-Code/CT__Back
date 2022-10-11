@@ -487,8 +487,7 @@ def get_user_wallet_infos():
 @cross_origin
 @ app.route('/walletamount/owner/<owner_user_id>', methods=['GET'])
 def filter_owner_wallet_amount(owner_user_id):
-    infos = requests.get('https://www.azerbn.com//walletamount').json()
-    infos.headers.add('Access-Control-Allow-Origin', '*')
+    infos = requests.get('https://www.azerbn.com/walletamount').json()
     # user = Users.query.filter_by(id=owner_user_id).first()
     output_dict = [x for x in infos if x['owner_id'] == owner_user_id]
     output_json = json.dumps(output_dict)
