@@ -328,7 +328,6 @@ def create_graph():
     plt.ylabel('Pertes et gains', color='#efefef')
     plt.xlabel('Temps', color='#efefef')
     plt.savefig('graph.png')
-    plt.savefig('graph.png')
 
     return send_file('graph.png', mimetype='image/png')
 
