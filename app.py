@@ -1,6 +1,6 @@
 from imp import reload
 from sqlalchemy.dialects.postgresql import UUID
-from flask import Flask, jsonify, request, abort, session, Request
+from flask import Flask, jsonify, request, abort, send_file, session, Request
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
 from datetime import datetime
@@ -328,12 +328,9 @@ def create_graph():
     plt.ylabel('Pertes et gains', color='#efefef')
     plt.xlabel('Temps', color='#efefef')
     plt.savefig('graph.png')
-    # plt.savefig('src\components\GraphicPage\\graph.png')
+    plt.savefig('graph.png')
 
-    return jsonify({
-        "id": user.id,
-        "email": user.email
-    })
+    return send_file('graph.png', mimetype='image/png')
 
     #--------------------------------------------tache automatique----------------------------#
 
@@ -473,7 +470,7 @@ def post_user_wallet_infos():
 
 sched = BackgroundScheduler(daemon=True)
 sched.add_job(post_user_wallet_infos, 'interval',
-              seconds=3600)
+              seconds=3600*12)
 sched.start()
 
 
