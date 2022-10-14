@@ -34,6 +34,10 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SESSION_TYPE'] = "filesystem"
 app.config['SESSION_PERMANENT'] = True
 app.config['SESSION_USE_SIGNER'] = True
+# port = os.environ.get("REDIS_PORT")
+# app.config['SESSION_REDIS'] = redis.from_url(
+#     "redis://:0z0dJeeK10hQfNLcu4Iv@flaskserv-4532.redis.a.osc-fr1.scalingo-dbs.com:40737")
+
 app.config['SECRET_KEY'] = 'put_my_secret_key_here'
 app.config['SESSION_COOKIE_NAME'] = "my_session"
 app.config['SESSION_COOKIE_SECURE'] = True
@@ -160,7 +164,7 @@ def get_owner(owner_user_id):
     event_list = []
     for event in events:
         event_list.append(format_event(event))
-
+    # attention ilmanque quelque chose pour que ca renvoie
     return {'events': event_list}
 
 
@@ -448,6 +452,10 @@ def post_user_wallet_infos():
 
         lala = (open('filed.json', 'r'))
 
+    # with open('filed.json', 'w') as file:
+    #     json.dump([{'owner_id': id, 'walletAmount': current_amount, 'initial amount invested': capital} for id, current_amount, capital in zip(
+    #         arr_of_user_id_once, arr_of_current_amount, arr_of_capital_by_user)], file)
+
         jsonfile = open('filed.json')
         data = json.load(jsonfile)
         data.append(datas_to_post_every_1_day)
@@ -475,10 +483,11 @@ def get_user_wallet_infos():
 @cross_origin
 @ app.route('/walletamount/owner/<owner_user_id>', methods=['GET'])
 def filter_owner_wallet_amount(owner_user_id):
+    # infos = requests.get('https://www.azerbn.com/walletamount').json()
 
     with open('filed.json') as file:
         data = json.load(file)
-
+    # user = Users.query.filter_by(id=owner_user_id).first()
         output_dict = [x for x in data if x['owner_id'] == owner_user_id]
         output_json = json.dumps(output_dict)
         return output_json
