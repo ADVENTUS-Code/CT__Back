@@ -469,7 +469,7 @@ def post_user_wallet_infos():
 
 sched = BackgroundScheduler(daemon=True)
 sched.add_job(post_user_wallet_infos, 'interval',
-              hours=24)
+              seconds=86400)
 sched.start()
 
 
